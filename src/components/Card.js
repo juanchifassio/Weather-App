@@ -11,15 +11,15 @@ import {
 } from "@chakra-ui/react";
 import DateFormat from "./Date";
 
-const WeatherCard = ({ weathers }) => {
-  return (
-    <>
-      <Center py={6}>
+const WeatherCard = ({ forecast }) => {
+
+  return(
+    <Center py={6} id={forecast.dt}>
         <Box
           maxW={"600px"}
           w={"full"}
           h={600}
-          bg={useColorModeValue("white", "gray.900")}
+          bg="white"
           boxShadow={"2xl"}
           rounded={"md"}
           p={6}
@@ -28,7 +28,7 @@ const WeatherCard = ({ weathers }) => {
         >
           <Stack>
             <Heading
-              color={useColorModeValue("gray.700", "white")}
+              color="gray.700"
               fontSize={"2xl"}
               fontFamily={"body"}
             >
@@ -40,35 +40,50 @@ const WeatherCard = ({ weathers }) => {
             <Center>imagen</Center>
           </Stack>
           <Stack>
-            <Text>weather.weather.main</Text>
-            <Text>weather.weather.description</Text>
+            <Text>{forecast.weather[0].main}</Text>
+            <Text>{forecast.weather[0].description}</Text>
             <Heading size="md">Temperatura Actual</Heading>
-            <Heading size="lg">weather.main.temp °C</Heading>
+            <Heading size="lg">{forecast.main.temp} °C</Heading>
             <Grid templateColumns="repeat(2, 1fr)">
               <GridItem>
                 <Stack>
                   <Text>Temperatura minima</Text>
-                  <Text fontSize="xl">weather.main.temp_min °C</Text>
+                  <Text fontSize="xl">{forecast.main.temp_min} °C</Text>
                 </Stack>
               </GridItem>
               <GridItem>
                 <Stack>
                   <Text>Temperatura max</Text>
-                  <Text fontSize="xl">weather.main.temp_max °C</Text>
+                  <Text fontSize="xl">{forecast.main.temp_max} °C</Text>
                 </Stack>
               </GridItem>
             </Grid>
             <Grid templateColumns="repeat(2, 1fr)">
-              <Box textAlign="left">Humedad %</Box>
-              <Box textAlign="right">Viento meter/sec</Box>
-              <Box textAlign="left">Presion hPa</Box>
-              <Box textAlign="right">Visibilidad metres</Box>
+              <Box textAlign="left"><Stack>
+                  <Text>Humidity</Text>
+                  <Text fontSize="xl">{forecast.main.humidity} %</Text>
+                </Stack></Box>
+              <Box textAlign="right"><Stack>
+                  <Text>Wind</Text>
+                  <Text fontSize="xl">{forecast.wind.speed} %</Text>
+                </Stack></Box>
+              <Box textAlign="left"><Stack>
+                  <Text>Pressure</Text>
+                  <Text fontSize="xl">{forecast.main.pressure} hPa</Text>
+                </Stack></Box>
+              <Box textAlign="right"><Stack>
+                  <Text>Visibility</Text>
+                  <Text fontSize="xl">{forecast.main.pressure} hPa</Text>
+                </Stack></Box>
             </Grid>
           </Stack>
         </Box>
-      </Center>
-    </>
-  );
+      </Center>)
+    
+    
+    
+    
+  
 };
 
 export default WeatherCard;

@@ -3,10 +3,17 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import WeatherCard from "./Card";
 
-const CardsCarousel = ({ weather }) => {
+const CardsCarousel = ( {weathers} ) => {
+
+//<WeatherCard forecast={forecast} />
+
+
+
   return (
     <Carousel showThumbs={false}>
-      <WeatherCard weather={weather} />
+      
+      {weathers.list !== undefined ? (weathers.list.map((forecast) => {
+  return <WeatherCard forecast={forecast} />})):(null)}
     </Carousel>
   );
 };
