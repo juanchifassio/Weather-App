@@ -6,6 +6,7 @@ import {
   Button,
   useColorModeValue,
   useColorMode,
+  Link,
 } from "@chakra-ui/react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import SearchParams from "./SearchParams";
@@ -16,8 +17,9 @@ const Navbar = (props) => {
 
   const CityData = props.cityData;
 
-  const fetchData = (datita) => {
-    props.Data(datita);
+  const fetchData = (data) => {
+    props.Data(data);
+    console.log(data);
   };
 
   const fetchCity = (city) => {
@@ -28,7 +30,11 @@ const Navbar = (props) => {
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Heading size="md">Weather App</Heading>
+          <Heading size="md">
+            <Link href="/" style={{ textDecoration: "none" }}>
+              Weather App
+            </Link>
+          </Heading>
           <Flex alignItems={"center"}>
             <SearchCity fetchCity={fetchCity} />
             <SearchParams fetchData={fetchData} />

@@ -1,13 +1,16 @@
+import moment from "moment";
 import React from "react";
 
-const DateFormat = () => {
-  var today = new Date();
-  var day = String(today.getDate());
-  var month = today.toLocaleString("en-us", { month: "long" });
-  var hours = String(today.getHours());
-  var minutes = String(today.getMinutes());
+const DateFormat = ({ date }) => {
+  const Day = date.split(" ")[0];
+  const Hour = date.split(" ")[1].slice(0, -3);
 
-  return <>{`${month} ${day}, ${hours}:${minutes}`}</>;
+  const dayArray = Day.split("-");
+
+  var constructor = new Date(dayArray[0], dayArray[1] - 1, dayArray[2]);
+  var day = moment(constructor).format("MMMM D Y");
+
+  return <>{`${day}, ${Hour} UTC`}</>;
 };
 
 export default DateFormat;

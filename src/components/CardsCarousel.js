@@ -1,19 +1,24 @@
 import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import WeatherCard from "./Card";
+import NowCard from "./NowCard";
 
-const CardsCarousel = ( {weathers} ) => {
-
-//<WeatherCard forecast={forecast} />
-
-
-
+const CardsCarousel = ({ weathers }) => {
   return (
-    <Carousel showThumbs={false}>
-      
-      {weathers.list !== undefined ? (weathers.list.map((forecast) => {
-  return <WeatherCard forecast={forecast} />})):(null)}
+    <Carousel
+      showThumbs={false}
+      showStatus={false}
+      autoFocus={true}
+      useKeyboardArrows={true}
+    >
+      {weathers.list !== undefined ? (
+        weathers.list.map((forecast) => {
+          return <WeatherCard forecast={forecast} />;
+        })
+      ) : (
+        <NowCard weather={weathers} />
+      )}
     </Carousel>
   );
 };

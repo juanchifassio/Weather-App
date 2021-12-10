@@ -1,22 +1,33 @@
 import { Select } from "@chakra-ui/select";
 import React from "react";
 
-const SearchParams = ({ fetchData }, { fetchCity }) => {
-  const days = ["1", "2", "3", "4", "5"];
-  const units = ["metric", "standard", "imperial"];
+const SearchParams = ({ fetchData }) => {
+  const days = [
+    { label: "Now", value: "1" },
+    { label: "1 Day", value: "8" },
+    { label: "2 Days", value: "16" },
+    { label: "3 Days", value: "24" },
+    { label: "4 Days", value: "32" },
+    { label: "5 Days", value: "40" },
+  ];
+  const units = [
+    { label: "Metric", value: "metric" },
+    { label: "Standard", value: "standard" },
+    { label: "Imperial", value: "imperial" },
+  ];
 
   const daysOptions = days.map((day) => {
     return (
-      <option value={day} key={day}>
-        {day}
+      <option value={day.value} key={day.value}>
+        {day.label}
       </option>
     );
   });
 
   const unitsOptions = units.map((unit) => {
     return (
-      <option value={unit} key={unit}>
-        {unit}
+      <option value={unit.value} key={unit.value}>
+        {unit.label}
       </option>
     );
   });
