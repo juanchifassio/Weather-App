@@ -15,6 +15,7 @@ import DateFormat from "./Date";
 
 const WeatherCard = ({ forecast }) => {
   const city = useContext(Context);
+  console.log(forecast)
 
   return (
     <Center id={forecast.dt} my={20}>
@@ -43,9 +44,8 @@ const WeatherCard = ({ forecast }) => {
           <Box px="180">
             <Image
               src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@4x.png`}
-              alt={forecast.weather[0].icon}
               borderRadius="full"
-              boxSize="150px"
+              boxSize="160px"
             />
           </Box>
         </Stack>

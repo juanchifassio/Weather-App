@@ -16,9 +16,9 @@ const CardsCarousel = ({ weathers }) => {
         weathers.list.map((forecast) => {
           return <WeatherCard forecast={forecast} />;
         })
-      ) : (
+      ) : (weathers.base!==undefined?(
         <NowCard weather={weathers} />
-      )}
+      ):(null))}
     </Carousel>
   );
 };

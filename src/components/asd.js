@@ -18,9 +18,7 @@
       >
         {city}
       </Heading>
-      <Text color={"gray.500"}>
-        <DateFormat date={weather.dt_txt} />
-      </Text>
+
       <Box px="180">
         <Image
           src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
