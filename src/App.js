@@ -10,6 +10,7 @@ import CardsCarousel from "./components/CardsCarousel";
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import axios from "axios";
+import LoadingSpinner from "./components/Spinner";
 
 export const Context = createContext("");
 export const Unit = createContext("");
@@ -90,7 +91,9 @@ function App() {
             <Day.Provider value={days}>
               {cityName !== undefined ? (
                 <CardsCarousel weathers={weathers} />
-              ) : null}
+              ) : (
+                <LoadingSpinner />
+              )}
             </Day.Provider>
           </Unit.Provider>
         </Context.Provider>

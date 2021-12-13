@@ -4,6 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Day } from "../App";
 import WeatherCard from "./Card/Card";
 import NowCard from "./Card/NowCard";
+import LoadingSpinner from "./Spinner";
 
 const CardsCarousel = ({ weathers }) => {
   const days = useContext(Day);
@@ -47,7 +48,9 @@ const CardsCarousel = ({ weathers }) => {
         })
       ) : weathers.base !== undefined ? (
         <NowCard weather={weathers} />
-      ) : null}
+      ) : (
+        <LoadingSpinner />
+      )}
     </Carousel>
   );
 };
